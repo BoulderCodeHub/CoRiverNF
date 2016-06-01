@@ -17,6 +17,12 @@ if(!require(devtools)){
 devtools::install_github('BoulderCodeHub/CoRiverNF')
 ```
 
-## Log:
+## Reproducing the Data
+
+The included data can be recreated by downloading the package code, or copying the code and Excel file located in [`data-raw`](data-raw).
+
+To run the code, edit the path to the Excel file located in the "User Input" section of the `getHistoricalNFData.R` file and then source that file. 
+
+## Log
 
 - 2016-06-xx: version 0.1 ready for use
