@@ -9,6 +9,7 @@ Depends: R (>= 3.2.4)
 License: CCO
 LazyData: true
 Suggests: CRSSIO (>= 0.2.1),
+    devtools,
     xlsx,
     xts,
     zoo
