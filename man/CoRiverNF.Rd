@@ -27,5 +27,8 @@ The package provides 6 differnt data sets:
   \item water year total natural flow (\code{\link{wyAnnTot}})
   \item water year intervening natural flow (\code{\link{wyAnnInt}})
 }
+
+The data are stored as \code{\link[xts]{xts}} objects. See vignette (XX) for examples of
+taking advantage of this object type.
 }
 

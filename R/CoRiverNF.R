@@ -18,6 +18,9 @@
 #'   \item water year intervening natural flow (\code{\link{wyAnnInt}})
 #' }
 #' 
+#' The data are stored as \code{\link[xts]{xts}} objects. See \code{vignette("xxx")} for examples of
+#' taking advantage of this object type.
+#' 
 #' @source \url{http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html}
 #' 
 #' @docType package
