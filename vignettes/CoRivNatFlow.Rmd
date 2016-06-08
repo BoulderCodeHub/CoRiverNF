@@ -1,0 +1,71 @@
+---
+title: "Colorado River Natural Flow Data in R"
+author: "Alan Butler"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{CoRivNatFlow}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## Background
+
+`CoRiverNF` is a data only package containing natural flow data for the Colorado River Basin. The data are included at the natural flow basin nodal level used by the Colorado River Simulation System (CRSS).
+
+The purpose of the package is to streamline the process of getting the natural flow data in R, by providing the data as an R package. There are 6 data sets included in the package:
+
+- Monthly total natural flow: `monthlyTot`
+- monthly intervening natural flow: `monthlyInt`
+- calendar year total natural flow: `cyAnnTot`
+- calendar year intervening natural flow: `cyAnnInt`
+- water year total natural flow: `wyAnnTot`
+- water year intervening natural flow: `wyAnnInt`
+
+## Using the Natural Flow Data
+
+All of the provided natural flow data are saved as `xts` matrices with one variable for each natural flow node. Storing the data as an `xts` object helps provide easy access to different time periods of data.
+
+When loading the package, a message will post letting you know the source data for the natural flows.
+```{r}
+library(CoRiverNF)
+```
+
+`xts` is required to correctly access the data.
+```{r, warning=FALSE, message=FALSE}
+library(xts)
+```
+
+### Examples of Accessing Data
+
+For example one can access the 2010 monthly total natural flow at Lees Ferry simply:
+```{r}
+Sys.setenv(TZ='UTC')
+monthlyTot$LeesFerry['2010']
+```
+
+Setting the current timezone `Sys.setenv(TZ='UTC')` is not required, but it will ensure you do not receive warning messages about the current timezone differing from the object's time zone.
+
+Or, the annual total natural flow on the Green River at Greendale from 1960-1970 is:
+```{r}
+cyAnnTot$Greendale['1960/1970']
+```
+
+And finally, the beginning of the record until March 1908 or September 2012 until the end of the record are accessed with:
+```{r}
+monthlyInt$Imperial['/1908-03']
+monthlyTot$Bluff['2012-09/']
+```
+
+Each of the node names reflects a simplified variable name for the full USGS gage name. These simple names are:
+```{r}
+names(cyAnnTot)
+```
+
+### Examples of Aggregating Data
+
+
+
+## Updating the Data When There are New Natural Flows
+
+## References
