@@ -1,0 +1,130 @@
+---
+title: "Colorado River Natural Flow Data in R"
+author: "Alan Butler"
+date: "`r Sys.Date()`"
+output: 
+  rmarkdown::html_vignette:
+    fig_width: 6
+vignette: >
+  %\VignetteIndexEntry{CoRivNatFlow}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## Background
+
+`CoRiverNF` is a data only package containing natural flow data for the Colorado River Basin. The data are included at the natural flow basin nodal level used by the Colorado River Simulation System (CRSS).
+
+The purpose of the package is to streamline the process of getting the natural flow data in R, by providing the data as an R package. There are 6 data sets included in the package:
+
+- Monthly total natural flow: `monthlyTot`
+- Monthly intervening natural flow: `monthlyInt`
+- Calendar year total natural flow: `cyAnnTot`
+- Calendar year intervening natural flow: `cyAnnInt`
+- Water year total natural flow: `wyAnnTot`
+- Water year intervening natural flow: `wyAnnInt`
+
+## Using the Natural Flow Data
+
+All of the provided natural flow data are saved as `xts` matrices with one variable for each natural flow node. Storing the data as an `xts` object helps provide easy access to different time periods of data.
+
+When loading the package, a message will post letting you know the source data for the natural flows.
+```{r}
+library(CoRiverNF)
+```
+
+The `xts` package is required to correctly access the data. Setting the current timezone `Sys.setenv(TZ='UTC')` is not required, but it will ensure you do not receive warning messages about the current timezone differing from the object's time zone.
+```{r, warning=FALSE, message=FALSE}
+library(xts)
+Sys.setenv(TZ='UTC')
+```
+
+### Examples of Accessing Data
+
+For example one can access the 2010 monthly total natural flow at Lees Ferry:
+```{r}
+monthlyTot$LeesFerry['2010']
+```
+
+Or, the annual total natural flow on the Green River at Greendale from 1960-1970 is:
+```{r}
+cyAnnTot$Greendale['1960/1970']
+```
+
+And finally, the beginning of the record until March 1908 or September 2012 until the end of the record are accessed with:
+```{r}
+monthlyInt$Imperial['/1908-03']
+monthlyTot$Bluff['2012-09/']
+```
+
+To get the flow in a single month for the entire time period, use `xts::.indexmon`. For example to select data for July of every year:
+```{r}
+head(monthlyInt$Cameo[.indexmon(monthlyInt$Cameo)==6]) # note its 0-based indexing
+```
+
+See the `xts` package documentation for additional information on accessing and using the `xts` object. 
+
+Each of the node names reflects a variable name that simplifies the full USGS gage name. The variable names and full USGS gage names can be accessed in `CRSSIO::nfShortNames` and `CRSSIO::nfGageNames`, respecvtively. The variable names are:
+```{r}
+names(cyAnnTot)
+```
+
+### Examples of Aggregating Data
+
+The `xts` package contains helpful functions for aggregating `xts` data. For example you can quickly convert the monthly data into annual data. The summed monthly data will match the provided annual data:
+```{r}
+lfAnn <- xts::apply.yearly(monthlyTot$LeesFerry, sum)
+# compare the two, but drop 1905 from lfAnn since it is not
+# a full year
+all.equal(lfAnn['1906/'], cyAnnTot$LeesFerry)
+```
+
+From the output of `all.equal` we see the only thing not equal is the sheet name that the original data was derrived from.
+
+Summing accross a water year is slightly more involved:
+```{r}
+lfWY <- xts::period.sum(monthlyTot$LeesFerry,endpoints(monthlyTot$LeesFerry, on="months",k=12))
+# this time cut off data after WY 2012
+range(lfWY['/2012-09']-wyAnnTot$LeesFerry)
+```
+
+The above use of `endpoints` only works because the data start at the beginning of a water year. Also, the values are compared instead of the entire object because some attributes are modified with the call to `period.sum`. A more robust solution to the water year sum is:
+```{r}
+lf <- monthlyTot$LeesFerry
+# get all the indeces for Septembers
+myIndex <- lf[index(lf[.indexmon(lf)==8]), which.i=TRUE]
+# summ using all Septembers as the endpoints for the summation
+lfWY2 <- xts::period.sum(lf, myIndex)
+# compare to the first solution
+all.equal(lfWY, lfWY2)
+```
+
+This ensures your grabbing all of the Septembers (`.indexmon()==8`).
+
+Currently, passing `period.sum` or `apply.yearly` to `apply`, e.g., `apply(data, 2, period.sum)`, is not working. Thus it is difficult to get annual values for all nodes simultaneously. 
+
+### Plotting
+
+The include natural flow data will easily work with `ggplot2` and `dygraphs`, among other plotting packages.
+
+```{r, fig.align='center'}
+library(ggplot2)
+ggplot(cyAnnTot, aes(x=index(cyAnnTot))) + geom_line(aes(y=LeesFerry)) +
+  scale_x_continuous() + scale_y_continuous()
+```
+
+To compare intervening flow on the Colorado River at Cameo to the Gunnison River at Grand Junction using `dygraphs`:
+
+```{r, warning=FALSE, fig.align='center'}
+library(dygraphs)
+# column 2 is Cameo, column 6 is Grand Junction
+dygraph(monthlyInt['2002/2005',c(2,6)])
+```
+
+## Updating the Natural Flow Data
+
+When new natural flow data is released, approximately every year, the package will be updated to include the new data. The code used to create the data in this package is available on [the Github repository for this package](http://www.github.com/BoulderCodeHub/CoRiverNF/tree/master/R). The `getHistoricalNFData.R` file can be updated to use the new source workbook.
+
+## References
+
+Source data from Reclamation is available at [http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html](http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html).
