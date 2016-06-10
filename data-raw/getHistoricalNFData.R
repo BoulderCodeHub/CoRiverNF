@@ -1,6 +1,8 @@
 # script to get the monthly and annual, intervening and total natural flow into R.
 
 library(xlsx)
+library(CRSSIO) # github.com/BoulderCodeHub/CRSSIO
+library(devtools)
 
 # ---------------------------
 # USER INPUT
