@@ -40,7 +40,6 @@ The data includes xts attributes (\code{xtsAttributes(monthlyTot)}) for the
 source, the source workbook, and the sheet name the data were created from.
 }
 \seealso{
-\code{\link[CRSSIO]{nfShortNames}}, \code{\link[CRSSIO]{nfGageNames}}, 
 \code{\link{monthlyTot}}, \code{\link{monthlyInt}}, \code{\link{cyAnnInt}},
 \code{\link{wyAnnTot}}, \code{\link{wyAnnInt}}
 }

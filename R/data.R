@@ -27,8 +27,7 @@
 #' 
 #' @source \url{http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html}
 #' 
-#' @seealso \code{\link[CRSSIO]{nfShortNames}}, \code{\link[CRSSIO]{nfGageNames}}, 
-#' \code{\link{monthlyInt}}, \code{\link{cyAnnTot}}, \code{\link{cyAnnInt}},
+#' @seealso \code{\link{monthlyInt}}, \code{\link{cyAnnTot}}, \code{\link{cyAnnInt}},
 #' \code{\link{wyAnnTot}}, \code{\link{wyAnnInt}}
 'monthlyTot'
 
@@ -61,8 +60,7 @@
 #' 
 #' @source \url{http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html}
 #' 
-#' @seealso \code{\link[CRSSIO]{nfShortNames}}, \code{\link[CRSSIO]{nfGageNames}}, 
-#' \code{\link{monthlyTot}}, \code{\link{cyAnnTot}}, \code{\link{cyAnnInt}},
+#' @seealso \code{\link{monthlyTot}}, \code{\link{cyAnnTot}}, \code{\link{cyAnnInt}},
 #' \code{\link{wyAnnTot}}, \code{\link{wyAnnInt}}
 'monthlyInt'
 
@@ -98,8 +96,7 @@
 #' 
 #' @source \url{http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html}
 #' 
-#' @seealso \code{\link[CRSSIO]{nfShortNames}}, \code{\link[CRSSIO]{nfGageNames}}, 
-#' \code{\link{monthlyTot}}, \code{\link{monthlyInt}}, \code{\link{cyAnnInt}},
+#' @seealso \code{\link{monthlyTot}}, \code{\link{monthlyInt}}, \code{\link{cyAnnInt}},
 #' \code{\link{wyAnnTot}}, \code{\link{wyAnnInt}}
 'cyAnnTot'
 
@@ -135,8 +132,7 @@
 #' 
 #' @source \url{http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html}
 #' 
-#' @seealso \code{\link[CRSSIO]{nfShortNames}}, \code{\link[CRSSIO]{nfGageNames}}, 
-#' \code{\link{monthlyTot}}, \code{\link{monthlyInt}}, \code{\link{cyAnnTot}},
+#' @seealso \code{\link{monthlyTot}}, \code{\link{monthlyInt}}, \code{\link{cyAnnTot}},
 #' \code{\link{wyAnnTot}}, \code{\link{wyAnnInt}}
 'cyAnnInt'
 
@@ -172,8 +168,7 @@
 #' 
 #' @source \url{http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html}
 #' 
-#' @seealso \code{\link[CRSSIO]{nfShortNames}}, \code{\link[CRSSIO]{nfGageNames}}, 
-#' \code{\link{monthlyTot}}, \code{\link{monthlyInt}}, \code{\link{cyAnnInt}},
+#' @seealso \code{\link{monthlyTot}}, \code{\link{monthlyInt}}, \code{\link{cyAnnInt}},
 #' \code{\link{cyAnnTot}}, \code{\link{wyAnnInt}}
 'wyAnnTot'
 
@@ -209,7 +204,6 @@
 #' 
 #' @source \url{http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html}
 #' 
-#' @seealso \code{\link[CRSSIO]{nfShortNames}}, \code{\link[CRSSIO]{nfGageNames}}, 
-#' \code{\link{monthlyTot}}, \code{\link{monthlyInt}}, \code{\link{cyAnnInt}},
+#' @seealso \code{\link{monthlyTot}}, \code{\link{monthlyInt}}, \code{\link{cyAnnInt}},
 #' \code{\link{cyAnnTot}}, \code{\link{wyAnnTot}}
 'wyAnnInt'
