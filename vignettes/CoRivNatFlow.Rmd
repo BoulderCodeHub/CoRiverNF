@@ -2,7 +2,9 @@
 title: "Colorado River Natural Flow Data in R"
 author: "Alan Butler"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
+output: 
+  rmarkdown::html_vignette:
+    fig_width: 6
 vignette: >
   %\VignetteIndexEntry{CoRivNatFlow}
   %\VignetteEngine{knitr::rmarkdown}
@@ -100,6 +102,24 @@ all.equal(lfWY, lfWY2)
 This ensures your grabbing all of the Septembers (`.indexmon()==8`).
 
 Currently, passing `period.sum` or `apply.yearly` to `apply`, e.g., `apply(data, 2, period.sum)`, is not working. Thus it is difficult to get annual values for all nodes simultaneously. 
+
+### Plotting
+
+The include natural flow data will easily work with `ggplot2` and `dygraphs`, among other plotting packages.
+
+```{r, fig.align='center'}
+library(ggplot2)
+ggplot(cyAnnTot, aes(x=index(cyAnnTot))) + geom_line(aes(y=LeesFerry)) +
+  scale_x_continuous() + scale_y_continuous()
+```
+
+To compare intervening flow on the Colorado River at Cameo to the Gunnison River at Grand Junction using `dygraphs`:
+
+```{r, warning=FALSE, fig.align='center'}
+library(dygraphs)
+# column 2 is Cameo, column 6 is Grand Junction
+dygraph(monthlyInt['2002/2005',c(2,6)])
+```
 
 ## Updating the Natural Flow Data
 

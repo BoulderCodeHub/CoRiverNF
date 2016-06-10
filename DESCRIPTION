@@ -14,6 +14,8 @@ Requires:
 Suggests:
     CRSSIO (>= 0.2.1),
     devtools,
+    dygraphs,
+    ggplot2,
     xlsx,
     knitr,
     rmarkdown
