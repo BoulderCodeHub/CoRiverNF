@@ -9,7 +9,7 @@ Depends:
     R (>= 3.2.4)
 License: CC0
 LazyData: true
-Requires:
+Imports:
     xts
 Suggests:
     CRSSIO (>= 0.2.1),
