@@ -25,7 +25,7 @@ upstream of a given gage, but below all upstream gage locations.
 
 The natural flows are recomputed annually and are subject
 to change without notice. All methods are fully desribed at 
-\link{http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html}.
+\url{http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html}.
 
 Each of the 29 locations are represented by one variable (column). The variable
 names use a shorthand name of each gage location, e.g., \code{LeesFerry} is

@@ -7,7 +7,7 @@ Description: A data only package containing natural flow data for the Colorado
     Colorado River Simulation System (CRSS).
 Depends:
     R (>= 3.2.4)
-License: CCO
+License: CC0
 LazyData: true
 Requires:
     xts

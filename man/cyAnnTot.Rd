@@ -25,7 +25,8 @@ upstream of a given gage, but below all upstream gage locations.
 
 The natural flows are recomputed annually and are subject
 to change without notice. All methods are fully desribed at 
-\link{http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html}. 
+\url{http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html}.
+
 Summing \code{\link{monthlyTot}} each year from January 1906 through December 2012
 will equal these data.
 
