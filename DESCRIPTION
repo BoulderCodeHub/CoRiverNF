@@ -12,12 +12,9 @@ LazyData: true
 Imports:
     xts
 Suggests:
-    devtools,
     dygraphs,
     ggplot2,
-    xlsx,
     knitr,
     rmarkdown
-Remotes: BoulderCodeHub/CRSSIO
 RoxygenNote: 5.0.1
 VignetteBuilder: knitr
