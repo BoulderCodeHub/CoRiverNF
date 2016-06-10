@@ -1,6 +1,6 @@
 ## CoRiverNF
 
-[![Travis-CI Build Status](https://travis-ci.org/rabutler/CoRiverNF.svg?branch=master)](https://travis-ci.org/rabutler/CoRiverNF)
+[![Build Status](https://travis-ci.org/BoulderCodeHub/CoRiverNF.svg?branch=master)](https://travis-ci.org/BoulderCodeHub/CoRiverNF)
 
 A data only R package containing natural flow data for the Colorado River Basin. Data is included at the natural flow basin nodal level used by the Colorado River Simulation (CRSS).
 
