@@ -39,4 +39,4 @@ To run the code, edit the path to the Excel file located in the "User Input" sec
 
 ## Log
 
-- 2016-06-xx: version 0.1 ready for use
+- 2016-06-2016: version 0.1 ready for use
