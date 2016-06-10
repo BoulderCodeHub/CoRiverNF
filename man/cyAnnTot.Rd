@@ -3,7 +3,7 @@
 \docType{data}
 \name{cyAnnTot}
 \alias{cyAnnTot}
-\title{Calendar Year Total Natural Flows}
+\title{Calendar Year Total Natural Flow}
 \format{An xts matrix with 107 rows (years) and 29 columns (locations).
 All values are in acre-ft. Each value is associated with December of the year.}
 \source{
@@ -14,18 +14,19 @@ cyAnnTot
 }
 \description{
 A data set containing the annual (calendar year) total natural flow at 29 locations 
-in the Colorado River Basin from 1906 through 2012. 
+in the Colorado River Basin from 1906 through 2012.
+}
+\details{
 Natural flow represents the flow that would have  occurred at a location, had 
 depletions and reservoir regulation not been present upstream of that location. 
 The total natural flow represents the total flow in the entire basin above a given 
 gage. The intervening natural flow represents only the flow that originates 
 upstream of a given gage, but below all upstream gage locations.
-}
-\details{
+
 The natural flows are recomputed annually and are subject
 to change without notice. All methods are fully desribed at 
-\link{http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html}. Summing 
-\code{\link{monthlyTot}} each year from January 1906 through December 2012
+\link{http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html}. 
+Summing \code{\link{monthlyTot}} each year from January 1906 through December 2012
 will equal these data.
 
 Each of the 29 locations are represented by one variable (column). The variable

@@ -1,7 +1,8 @@
-#' Monthly Total Natural Flows
+#' Monthly Total Natural Flow
 #' 
 #' A data set containing the monthly total natural flow at 29 locations 
 #' in the Colorado River Basin from October 1905 through December 2012. 
+#' 
 #' Natural flow represents the flow that would have  occurred at a location, had 
 #' depletions and reservoir regulation not been present upstream of that location. 
 #' The total natural flow represents the total flow in the entire basin above a given 
@@ -31,11 +32,12 @@
 #' \code{\link{wyAnnTot}}, \code{\link{wyAnnInt}}
 'monthlyTot'
 
-#' Monthly Intervening Natural Flows
+#' Monthly Intervening Natural Flow
 #' 
 #' A data set containing the monthly intervening natural flow at 29 locations 
 #' in the Colorado River Basin from October 1905 through December 2012.
-#' #' Natural flow represents the flow that would have  occurred at a location, had 
+#' 
+#' Natural flow represents the flow that would have  occurred at a location, had 
 #' depletions and reservoir regulation not been present upstream of that location. 
 #' The total natural flow represents the total flow in the entire basin above a given 
 #' gage. The intervening natural flow represents only the flow that originates 
@@ -64,10 +66,11 @@
 #' \code{\link{wyAnnTot}}, \code{\link{wyAnnInt}}
 'monthlyInt'
 
-#' Calendar Year Total Natural Flows
+#' Calendar Year Total Natural Flow
 #' 
 #' A data set containing the annual (calendar year) total natural flow at 29 locations 
 #' in the Colorado River Basin from 1906 through 2012. 
+#' 
 #' Natural flow represents the flow that would have  occurred at a location, had 
 #' depletions and reservoir regulation not been present upstream of that location. 
 #' The total natural flow represents the total flow in the entire basin above a given 
@@ -76,8 +79,8 @@
 #' 
 #' The natural flows are recomputed annually and are subject
 #' to change without notice. All methods are fully desribed at 
-#' \link{http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html}. Summing 
-#' \code{\link{monthlyTot}} each year from January 1906 through December 2012
+#' \link{http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html}. 
+#' Summing \code{\link{monthlyTot}} each year from January 1906 through December 2012
 #' will equal these data.
 #' 
 #' Each of the 29 locations are represented by one variable (column). The variable
@@ -99,10 +102,11 @@
 #' \code{\link{wyAnnTot}}, \code{\link{wyAnnInt}}
 'cyAnnTot'
 
-#' Calendar Year Intervening Natural Flows
+#' Calendar Year Intervening Natural Flow
 #' 
 #' A data set containing the annual (calendar year) intervening natural flow at 29 locations 
 #' in the Colorado River Basin 1906 through 2012. 
+#' 
 #' Natural flow represents the flow that would have  occurred at a location, had 
 #' depletions and reservoir regulation not been present upstream of that location. 
 #' The total natural flow represents the total flow in the entire basin above a given 
@@ -111,8 +115,9 @@
 #' 
 #' The natural flows are recomputed annually and are subject
 #' to change without notice. All methods are fully desribed at 
-#' \link{http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html}. Summing 
-#' \code{\link{monthlyInt}} each year from January 1906 through December 2012
+#' \link{http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html}. 
+#' 
+#' Summing \code{\link{monthlyInt}} each year from January 1906 through December 2012
 #' will equal these data.
 #' 
 #' Each of the 29 locations are represented by one variable (column). The variable
@@ -134,10 +139,11 @@
 #' \code{\link{wyAnnTot}}, \code{\link{wyAnnInt}}
 'cyAnnInt'
 
-#' Water Year Total Natural Flows
+#' Water Year Total Natural Flow
 #' 
 #' A data set containing the annual (water year [October - September]) total natural flow at 29 locations 
 #' in the Colorado River Basinfrom 1906 through 2012. 
+#' 
 #' Natural flow represents the flow that would have  occurred at a location, had 
 #' depletions and reservoir regulation not been present upstream of that location. 
 #' The total natural flow represents the total flow in the entire basin above a given 
@@ -146,8 +152,9 @@
 #' 
 #' The natural flows are recomputed annually and are subject
 #' to change without notice. All methods are fully desribed at 
-#' \link{http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html}. Summing 
-#' \code{\link{monthlyTot}} each water year from October 1905 through September 2012
+#' \link{http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html}. 
+#' 
+#' Summing \code{\link{monthlyTot}} each water year from October 1905 through September 2012
 #' will equal these data.
 #' 
 #' Each of the 29 locations are represented by one variable (column). The variable
@@ -169,10 +176,11 @@
 #' \code{\link{cyAnnTot}}, \code{\link{wyAnnInt}}
 'wyAnnTot'
 
-#' Water Year Intervening Natural Flows
+#' Water Year Intervening Natural Flow
 #' 
 #' A data set containing the annual (water year [October - September]) intervening natural flow at 29 locations 
 #' in the Colorado River Basin from 1906 through 2012. 
+#' 
 #' Natural flow represents the flow that would have  occurred at a location, had 
 #' depletions and reservoir regulation not been present upstream of that location. 
 #' The total natural flow represents the total flow in the entire basin above a given 
@@ -181,8 +189,9 @@
 #' 
 #' The natural flows are recomputed annually and are subject
 #' to change without notice. All methods are fully desribed at 
-#' \link{http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html}. Summing 
-#' \code{\link{monthlyTot}} each water year from October 1905 through September 2012
+#' \link{http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html}. 
+#' 
+#' Summing \code{\link{monthlyInt}} each water year from October 1905 through September 2012
 #' will equal these data.
 #' 
 #' Each of the 29 locations are represented by one variable (column). The variable

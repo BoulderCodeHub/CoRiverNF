@@ -3,7 +3,7 @@
 \docType{data}
 \name{monthlyTot}
 \alias{monthlyTot}
-\title{Monthly Total Natural Flows}
+\title{Monthly Total Natural Flow}
 \format{An xts matrix with 1287 rows (months) and 29 columns (locations).
 All values are in acre-ft.}
 \source{
@@ -14,14 +14,15 @@ monthlyTot
 }
 \description{
 A data set containing the monthly total natural flow at 29 locations 
-in the Colorado River Basin from October 1905 through December 2012. 
+in the Colorado River Basin from October 1905 through December 2012.
+}
+\details{
 Natural flow represents the flow that would have  occurred at a location, had 
 depletions and reservoir regulation not been present upstream of that location. 
 The total natural flow represents the total flow in the entire basin above a given 
 gage. The intervening natural flow represents only the flow that originates 
 upstream of a given gage, but below all upstream gage locations.
-}
-\details{
+
 The natural flows are recomputed annually and are subject
 to change without notice. All methods are fully desribed at 
 \link{http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html}.
