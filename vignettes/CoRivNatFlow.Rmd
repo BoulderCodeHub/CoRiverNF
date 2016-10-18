@@ -26,18 +26,14 @@ The purpose of the package is to streamline the process of getting the natural f
 
 ## Using the Natural Flow Data
 
-All of the provided natural flow data are saved as `xts` matrices with one variable for each natural flow node. Storing the data as an `xts` object helps provide easy access to different time periods of data.
+All of the provided natural flow data are saved as `xts` matrices with one variable for each natural flow node. The `xts` package is attached when attaching the `CoRiverNF` package. Storing the data as an `xts` object helps provide easy access to different time periods of data.
 
 When loading the package, a message will post letting you know the source data for the natural flows.
 ```{r}
 library(CoRiverNF)
 ```
 
-The `xts` package is required to correctly access the data. Setting the current timezone `Sys.setenv(TZ='UTC')` is not required, but it will ensure you do not receive warning messages about the current timezone differing from the object's time zone.
-```{r, warning=FALSE, message=FALSE}
-library(xts)
-Sys.setenv(TZ='UTC')
-```
+When this package is attached, the "TZ" (time zone) environment variable is set to "UTC". Since this package includes only monthly data, this is necessary to correctly access all of the monthly natural flow data in the `xts` object. To set the TZ environment variable to a different time zone, you can use: `Sys.setenv(TZ='UTC')`, and replace "UTC" with the desired time zone. Changing the time zone will cause a warning to post when accessing the natural flow data, but it *should* not have any other affects. 
 
 ### Examples of Accessing Data
 
@@ -64,7 +60,7 @@ head(monthlyInt$Cameo[.indexmon(monthlyInt$Cameo)==6]) # note its 0-based indexi
 
 See the `xts` package documentation for additional information on accessing and using the `xts` object. 
 
-Each of the node names reflects a variable name that simplifies the full USGS gage name. The variable names and full USGS gage names can be accessed in `CRSSIO::nfShortNames` and `CRSSIO::nfGageNames`, respecvtively. The variable names are:
+Each of the node names reflects a variable name that simplifies the full USGS gage name. The variable names and full USGS gage names can be accessed in `CRSSIO::nfShortNames` and `CRSSIO::nfGageNames`, respectively. The variable names are:
 ```{r}
 names(cyAnnTot)
 ```
@@ -79,9 +75,9 @@ lfAnn <- xts::apply.yearly(monthlyTot$LeesFerry, sum)
 all.equal(lfAnn['1906/'], cyAnnTot$LeesFerry)
 ```
 
-From the output of `all.equal` we see the only thing not equal is the sheet name that the original data was derrived from.
+From the output of `all.equal` we see the only thing not equal is the sheet name that the original data was derived from.
 
-Summing accross a water year is slightly more involved:
+Summing across a water year is slightly more involved:
 ```{r}
 lfWY <- xts::period.sum(monthlyTot$LeesFerry,endpoints(monthlyTot$LeesFerry, on="months",k=12))
 # this time cut off data after WY 2012
