@@ -2,6 +2,7 @@
 
 library(xlsx)
 library(CRSSIO) # github.com/BoulderCodeHub/CRSSIO
+library(xts)
 library(devtools)
 
 # ---------------------------
