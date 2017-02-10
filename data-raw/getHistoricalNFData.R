@@ -84,9 +84,9 @@ cyAnnInt = nfCYAnn[[2]]
 wyAnnTot = nfWYAnn[[1]]
 wyAnnInt = nfWYAnn[[2]]
 
-devtools::use_data(monthlyInt)
-devtools::use_data(monthlyTot)
-devtools::use_data(cyAnnTot)
-devtools::use_data(cyAnnInt)
-devtools::use_data(wyAnnTot)
-devtools::use_data(wyAnnInt)
+devtools::use_data(monthlyInt, overwrite = TRUE)
+devtools::use_data(monthlyTot, overwrite = TRUE)
+devtools::use_data(cyAnnTot, overwrite = TRUE)
+devtools::use_data(cyAnnInt, overwrite = TRUE)
+devtools::use_data(wyAnnTot, overwrite = TRUE)
+devtools::use_data(wyAnnInt, overwrite = TRUE)
