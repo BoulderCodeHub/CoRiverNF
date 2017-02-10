@@ -2,6 +2,7 @@
 
 library(xlsx)
 library(CRSSIO) # github.com/BoulderCodeHub/CRSSIO
+library(xts)
 library(devtools)
 
 # ---------------------------
@@ -9,7 +10,7 @@ library(devtools)
 # ---------------------------
 # iFile downloaded from http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html
 httpSource <- 'http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html'
-fName <- 'NaturalFlows1906-2012_withExtensions_1.8.15.xlsx'
+fName <- 'NaturalFlows1906-2014_withExtensions_9.20.16.xlsx'
 iFile <- file.path('data-raw',fName)
 # ---------------------------
 # END User Input
@@ -19,7 +20,8 @@ iFile <- file.path('data-raw',fName)
 # able to handle the annual data sheets, or create the annual data from the monthly data
 
 message('Before running code, be sure to clean up the Annual Worksheets in the Excel file.')
-message('In the 1906-2012 data, column B, row 652 contained data, which made the code not work.')
+message('In the 1906-2012 data, AnnualCYTotal Natural Flow, column B, row 652 contained data. ',
+        'This made the code not work.')
 
 createNFMatrix <- function(sName, timeStep, cy)
 {
@@ -82,9 +84,9 @@ cyAnnInt = nfCYAnn[[2]]
 wyAnnTot = nfWYAnn[[1]]
 wyAnnInt = nfWYAnn[[2]]
 
-devtools::use_data(monthlyInt)
-devtools::use_data(monthlyTot)
-devtools::use_data(cyAnnTot)
-devtools::use_data(cyAnnInt)
-devtools::use_data(wyAnnTot)
-devtools::use_data(wyAnnInt)
+devtools::use_data(monthlyInt, overwrite = TRUE)
+devtools::use_data(monthlyTot, overwrite = TRUE)
+devtools::use_data(cyAnnTot, overwrite = TRUE)
+devtools::use_data(cyAnnInt, overwrite = TRUE)
+devtools::use_data(wyAnnTot, overwrite = TRUE)
+devtools::use_data(wyAnnInt, overwrite = TRUE)
