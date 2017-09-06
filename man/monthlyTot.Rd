@@ -3,18 +3,36 @@
 \docType{data}
 \name{monthlyTot}
 \alias{monthlyTot}
-\title{Monthly Total Natural Flow}
-\format{An xts matrix with 1287 rows (months) and 29 columns (locations).
-All values are in acre-ft.}
+\alias{monthlyInt}
+\alias{cyAnnTot}
+\alias{cyAnnInt}
+\alias{wyAnnTot}
+\alias{wyAnnInt}
+\title{Monthly and Annual; Total and Intervening Natural Flow}
+\format{An xts matrix with 1323 (monthly data) or 110 (annual data) rows 
+and 29 columns (locations). All values are in acre-ft. For annual data, each 
+value is associated with December of the year for calendar year data and 
+September of the year for water year data.}
 \source{
 \url{http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html}
 }
 \usage{
 monthlyTot
+
+monthlyInt
+
+cyAnnTot
+
+cyAnnInt
+
+wyAnnTot
+
+wyAnnInt
 }
 \description{
-A data set containing the monthly total natural flow at 29 locations 
-in the Colorado River Basin from October 1905 through December 2012.
+A data set containing the monthly and annual; total and intervening natural 
+flow at 29 locations in the Colorado River Basin from October 1905 through 
+December 2015.
 }
 \details{
 Natural flow represents the flow that would have  occurred at a location, had 
@@ -29,16 +47,23 @@ to change without notice. All methods are fully desribed at
 
 Each of the 29 locations are represented by one variable (column). The variable
 names use a shorthand name of each gage location, e.g., \code{LeesFerry} is
-shorthand for the "Colorado River at Lees Ferry, AZ". See \code{CRSSIO::nfGageNames()}
-for full gage names, and \code{CRSSIO::nfShortNames()} for the shorthand version used
+shorthand for the "Colorado River at Lees Ferry, AZ". See \code{CRSSIO::\link[CRSSIO]{nfGageNames}()}
+for full gage names, and \code{CRSSIO::\link[CRSSIO]{nfShortNames}()} for the shorthand version used
 to name the variables in these data.
 
-The data includes xts attributes (\code{xtsAttributes(monthlyTot)}) for the
+The monthly data will sum to equal the annual data for each location as follows:
+\itemize{
+  \item Summing \code{monthlyTot} each year from January through December
+  will equal \code{cyAnnTot}
+  \item Summing \code{monthlyInt} each year from January through December 
+  will equal \code{cyAnnInt}
+  \item Summing \code{monthlyTot} each water year from October through 
+  September of the following year will equal \code{wyAnnTot}
+  \item Summing \code{monthlyInt} each water year from October through 
+  September of the following year will equal \code{wyAnnInt}
+}
+
+The data include xts attributes (ex: \code{xtsAttributes(monthlyTot)}) for the
 source, the source workbook, and the sheet name the data were created from.
 }
-\seealso{
-\code{\link{monthlyInt}}, \code{\link{cyAnnTot}}, \code{\link{cyAnnInt}},
-\code{\link{wyAnnTot}}, \code{\link{wyAnnInt}}
-}
 \keyword{datasets}
-

@@ -10,14 +10,12 @@ library(devtools)
 # ---------------------------
 # iFile downloaded from http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html
 httpSource <- 'http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html'
-fName <- 'NaturalFlows1906-2014_withExtensions_9.20.16.xlsx'
+fName <- 'NaturalFlows1906-2015_withExtensions_8.14.2017.xlsx'
 iFile <- file.path('data-raw',fName)
+iFile <- file.path("data-raw", fName)
 # ---------------------------
 # END User Input
 # ---------------------------
-
-# need to either: modify createNFMatrix function to take in timestep as an argument and be
-# able to handle the annual data sheets, or create the annual data from the monthly data
 
 message('Before running code, be sure to clean up the Annual Worksheets in the Excel file.')
 message('In the 1906-2012 data, AnnualCYTotal Natural Flow, column B, row 652 contained data. ',

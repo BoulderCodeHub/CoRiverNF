@@ -34,4 +34,3 @@ for examples of taking advantage of this object type.
 The natural flows are recomputed annually and are subject to change without notice. All methods are fully 
 desribed at \url{http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html.}
 }
-

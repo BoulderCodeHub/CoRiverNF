@@ -1,19 +1,24 @@
 Package: CoRiverNF
 Title: Colorado River Natural Flow Data
-Version: 0.3
+Version: 0.4.0
 Authors@R: person("Alan", "Butler", email = "r.alan.butler@gmail.com", role = c("aut", "cre"))
 Description: A data only package containing natural flow data for the Colorado
     River Basin. Data is included at the natural flow basin nodal level used by the
     Colorado River Simulation System (CRSS).
+URL: https://github.com/BoulderCodeHub/CoRiverNF
+BugReports: https://github.com/BoulderCodeHub/CoRiverNF/issues
 Depends:
     R (>= 3.2.4),
     xts
 License: CC0
 LazyData: true
 Suggests:
+    CRSSIO,
     dygraphs,
     ggplot2,
     knitr,
     rmarkdown
-RoxygenNote: 5.0.1
+Remotes:
+    BoulderCodeHub/CRSSIO
+RoxygenNote: 6.0.1
 VignetteBuilder: knitr
