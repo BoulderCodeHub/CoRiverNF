@@ -13,9 +13,12 @@ Depends:
 License: CC0
 LazyData: true
 Suggests:
+    CRSSIO,
     dygraphs,
     ggplot2,
     knitr,
     rmarkdown
+Remotes:
+    BoulderCodeHub/CRSSIO
 RoxygenNote: 6.0.1
 VignetteBuilder: knitr
