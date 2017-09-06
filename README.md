@@ -39,6 +39,7 @@ To run the code, edit the path to the Excel file located in the "User Input" sec
 
 ## Log
 
+- 2017-09-06: version 0.4.0 available - updated to 1906 - 2015 data
 - 2017-02-10: version 0.3 available - updated to 1906 - 2014 data
 - 2016-10-18: version 0.2 available
 - 2016-06-16: version 0.1 ready for use
