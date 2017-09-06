@@ -6,7 +6,7 @@ A data only R package containing natural flow data for the Colorado River Basin.
 
 The package is a convenient way to access the Colorado River Natural Flow data available [here](http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html). Every effort will be made to update the package to include the most recent natural flow data.
 
-__The current data is based on the 1906-2014 natural flow data with a data of September 20, 2016.__
+__The current data is based on the 1906-2015 natural flow data with a data of September 20, 2016.__
 
 ## Using in R
 
@@ -17,7 +17,7 @@ if(!require(devtools)){
     install.packages('devtools')
     library(devtools)
 }
-devtools::install_github('BoulderCodeHub/CoRiverNF')
+devtools::install_github('BoulderCodeHub/CoRiverNF', build_vignettes = TRUE)
 ```
 
 The package includes monthly, calendary year, and water year data for total and intervening natural flow in 6 data sets:
@@ -29,7 +29,7 @@ The package includes monthly, calendary year, and water year data for total and 
 - `wyAnnTot`
 - `wyAnnInt`
 
-You can easily access these data using natural flow node shorthand names, and the methods used by `xts` objects to subset time series data. For example, the 2000-2012 data at Lees Ferry can be accessed with `cyAnnTot$LeesFerry['2000/']`. For more examples see the vignette: `vignette('CoRivNatFlow', package = 'CoRiverNF')`.
+You can easily access these data using natural flow node shorthand names, and the methods used by `xts` objects to subset time series data. For example, the 2000-2015 data at Lees Ferry can be accessed with `cyAnnTot$LeesFerry['2000/']`. For more examples see the vignette: `vignette('CoRivNatFlow', package = 'CoRiverNF')`.
 
 ## Reproducing the Data
 
