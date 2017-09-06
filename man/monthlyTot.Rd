@@ -2,12 +2,12 @@
 % Please edit documentation in R/data.R
 \docType{data}
 \name{monthlyTot}
-\alias{cyAnnInt}
-\alias{cyAnnTot}
-\alias{monthlyInt}
 \alias{monthlyTot}
-\alias{wyAnnInt}
+\alias{monthlyInt}
+\alias{cyAnnTot}
+\alias{cyAnnInt}
 \alias{wyAnnTot}
+\alias{wyAnnInt}
 \title{Monthly and Annual; Total and Intervening Natural Flow}
 \format{An xts matrix with 1323 (monthly data) or 110 (annual data) rows 
 and 29 columns (locations). All values are in acre-ft. For annual data, each 
@@ -67,4 +67,3 @@ The data include xts attributes (ex: \code{xtsAttributes(monthlyTot)}) for the
 source, the source workbook, and the sheet name the data were created from.
 }
 \keyword{datasets}
-
