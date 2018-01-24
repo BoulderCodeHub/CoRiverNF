@@ -1,9 +1,10 @@
 # script to get the monthly and annual, intervening and total natural flow into R.
 
-library(xlsx)
+library(readxl)
 library(CRSSIO) # github.com/BoulderCodeHub/CRSSIO
 library(xts)
 library(devtools)
+library(dplyr)
 
 # ---------------------------
 # USER INPUT
@@ -11,40 +12,47 @@ library(devtools)
 # iFile downloaded from http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html
 httpSource <- 'http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html'
 fName <- 'NaturalFlows1906-2015_withExtensions_8.14.2017.xlsx'
-iFile <- file.path('data-raw',fName)
+startYear <- 1906
+endYear <- 2015
 iFile <- file.path("data-raw", fName)
 # ---------------------------
 # END User Input
 # ---------------------------
 
-message('Before running code, be sure to clean up the Annual Worksheets in the Excel file.')
-message('In the 1906-2012 data, AnnualCYTotal Natural Flow, column B, row 652 contained data. ',
-        'This made the code not work.')
-
 createNFMatrix <- function(sName, timeStep, cy)
 {
   # read in the new Excel natural flow spreadsheet
-  message('Starting to read in natural flow Excel file. Please be patient this may take several minutes.')
+  message("starting to read in ", sName, " worksheet.")
 
-  nf <- xlsx::read.xlsx(iFile, sheetName = sName)
-  # going to take a lot of trimming, etc. to get rid of all the labels we don't need for
-  # the flow matrix
-  message('Finsihed reading in natural flow Excel file.')
-  # trim off extraneous data
-  # know the first 7 rows are not needed
-  nfHead <- as.matrix(nf[1:7,1:31])
+  ymJan1906 <- zoo::as.yearmon("Jan 1906")
   
-  nf <- as.matrix(nf[5:(nrow(nf)),2:31]) 
-  # remove any rows that are NA since there could be one or more at the bottom of the file
-  notNaRows <- which(!is.na(nf[,1]))
-  nf <- nf[notNaRows,]
+  nf <- readxl::read_xlsx(iFile, sheet = sName, skip = 3) %>%
+    # going to take a lot of trimming, etc. to get rid of all the labels we don't 
+    # need for the flow matrix
+    dplyr::rename_at(
+      .vars = "Natural Flow And Salt Calc model Object.Slot", 
+      .funs = function(x) "date"
+    ) 
   
-  # now remove the bottom row since this is the average for the period
-  nf <- nf[1:(nrow(nf)-1),]
+  if (timeStep == "monthly")
+    nf <- nf %>%
+      dplyr::mutate_at("date", .funs = zoo::as.yearmon) %>%
+      # get rid of the filler row at top, and the rows containing averages on 
+      # bottom
+      dplyr::filter_at("date", dplyr::any_vars(!is.na(.)))
+  else
+    nf <- nf %>%
+      filter(date != "Calendar Year", date != "Water Year") %>%
+      dplyr::mutate_at("date", .funs = as.numeric) %>%
+      dplyr::filter_at("date", dplyr::any_vars(!is.na(.)))
+      
+   nf <- nf %>%
+    dplyr::select(-dplyr::matches("X__1")) %>%
+    dplyr::mutate_if(is.character, as.numeric) %>%
+    dplyr::select(-dplyr::matches("date")) %>%
+    as.data.frame()
   
-  # remove gap column
-  nf <- matrix(as.numeric(nf[,c(1:20,22:30)]),ncol = 29, byrow = F)
-  colnames(nf) <- CRSSIO::nfShortNames()
+  colnames(nf) <- CRSSIO::nf_gage_abbrv()
   
   # make into XTS object
   # set the system time zone to UTC
@@ -61,7 +69,13 @@ createNFMatrix <- function(sName, timeStep, cy)
     stop('invalid timeStep')
   }
   nfXts <- as.xts(read.zoo(data.frame(nf.yearMon, nf)))
-  xtsAttributes(nfXts) <- list(source=httpSource, sourceWorkbook=fName, sheetName = sName)
+  xtsAttributes(nfXts) <- list(
+    source = httpSource, 
+    sourceWorkbook = fName, 
+    sheetName = sName,
+    start_year = startYear,
+    end_year = endYear
+  )
   nfXts
 }
 

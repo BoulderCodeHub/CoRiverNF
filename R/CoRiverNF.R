@@ -18,7 +18,7 @@
 #'   \item Water year intervening natural flow (\code{\link{wyAnnInt}})
 #' }
 #' 
-#' The data are stored as \code{\link[xts]{xts}} objects. See \code{vignette('CoRivNatFlow', package = 'CoRiverNF')} 
+#' The data are stored as [xts::xts] objects. See `vignette('CoRivNatFlow', package = 'CoRiverNF')`
 #' for examples of taking advantage of this object type.
 #' 
 #' The natural flows are recomputed annually and are subject to change without notice. All methods are fully 

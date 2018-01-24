@@ -15,9 +15,9 @@
 #' \url{http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html}.
 #' 
 #' Each of the 29 locations are represented by one variable (column). The variable
-#' names use a shorthand name of each gage location, e.g., \code{LeesFerry} is
-#' shorthand for the "Colorado River at Lees Ferry, AZ". See \code{CRSSIO::\link[CRSSIO]{nfGageNames}()}
-#' for full gage names, and \code{CRSSIO::\link[CRSSIO]{nfShortNames}()} for the shorthand version used
+#' names use a shorthand name of each gage location, e.g., `"LeesFerry"` is
+#' shorthand for the "Colorado River at Lees Ferry, AZ". See [CRSSIO::nf_gage_names()]
+#' for full gage names, and [CRSSIO::nf_gage_abbrv()] for the shorthand version used
 #' to name the variables in these data.
 #' 
 #' The monthly data will sum to equal the annual data for each location as follows:
