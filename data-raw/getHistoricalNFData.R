@@ -78,7 +78,7 @@ nfWYAnn <- lapply(sName,createNFMatrix,'yearly', FALSE)
 monthlyInt = nfMon[[1]]
 monthlyTot = nfMon[[2]]
 cyAnnTot = nfCYAnn[[1]]
-cyAnnInt = nfCYAnn[[2]]
+cyAnnInt = round(nfCYAnn[[2]], 0) # spreadsheet includes non-rounded values
 wyAnnTot = nfWYAnn[[1]]
 wyAnnInt = nfWYAnn[[2]]
 
