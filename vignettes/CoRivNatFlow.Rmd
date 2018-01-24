@@ -60,7 +60,7 @@ head(monthlyInt$Cameo[.indexmon(monthlyInt$Cameo)==6]) # note its 0-based indexi
 
 See the `xts` package documentation for additional information on accessing and using the `xts` object. 
 
-Each of the node names reflects a variable name that simplifies the full USGS gage name. The variable names and full USGS gage names can be accessed in `CRSSIO::nfShortNames` and `CRSSIO::nfGageNames`, respectively. The variable names are:
+Each of the node names reflects a variable name that simplifies the full USGS gage name. The variable names and full USGS gage names can be accessed in `CRSSIO::nf_gage_abbrv()` and `CRSSIO::nf_gage_names()`, respectively. The variable names are:
 ```{r}
 names(cyAnnTot)
 ```
