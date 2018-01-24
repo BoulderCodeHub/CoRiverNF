@@ -10,14 +10,14 @@ testthat::setup(dir.create(m1Folder))
 testthat::setup(dir.create(m2Folder))
 teardown(unlink(tmpDir, recursive = TRUE))
 
-xlIn <- "../../data-raw/NaturalFlows1906-2015_withExtensions_8.14.2017.xlsx"
-if (!file.exists(xlIn))
-  stop("You need to update the xlIn variable in test_data.R.")
-
 test_that("created files from pacakge and Excel match", {
   skip_on_cran()
   skip_on_travis()
   skip_on_appveyor()
+  
+  xlIn <- "../../data-raw/NaturalFlows1906-2015_withExtensions_8.14.2017.xlsx"
+  if (!file.exists(xlIn))
+    stop("You need to update the xlIn variable in test_data.R.")
   
   crssi_create_dnf_files(
     "CoRiverNF",
