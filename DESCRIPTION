@@ -1,6 +1,6 @@
 Package: CoRiverNF
 Title: Colorado River Natural Flow Data
-Version: 0.4.0.9000
+Version: 0.4.1
 Authors@R: person("Alan", "Butler", email = "rabutler@usbr.gov", role = c("aut", "cre"))
 Description: A data only package containing natural flow data for the Colorado
     River Basin. Data is included at the natural flow basin nodal level used by the
