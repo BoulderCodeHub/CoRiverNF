@@ -12,6 +12,8 @@ library(dplyr)
 # iFile downloaded from http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html
 httpSource <- 'http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html'
 fName <- 'NaturalFlows1906-2015_withExtensions_8.14.2017.xlsx'
+startYear <- 1906
+endYear <- 2015
 iFile <- file.path("data-raw", fName)
 # ---------------------------
 # END User Input
@@ -67,7 +69,13 @@ createNFMatrix <- function(sName, timeStep, cy)
     stop('invalid timeStep')
   }
   nfXts <- as.xts(read.zoo(data.frame(nf.yearMon, nf)))
-  xtsAttributes(nfXts) <- list(source=httpSource, sourceWorkbook=fName, sheetName = sName)
+  xtsAttributes(nfXts) <- list(
+    source = httpSource, 
+    sourceWorkbook = fName, 
+    sheetName = sName,
+    start_year = startYear,
+    end_year = endYear
+  )
   nfXts
 }
 
