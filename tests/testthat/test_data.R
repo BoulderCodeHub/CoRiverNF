@@ -10,7 +10,7 @@ testthat::setup(dir.create(m1Folder))
 testthat::setup(dir.create(m2Folder))
 teardown(unlink(tmpDir, recursive = TRUE))
 
-test_that("created files from pacakge and Excel match", {
+test_that("created files from package and Excel match", {
   skip_on_cran()
   skip_on_travis()
   skip_on_appveyor()
