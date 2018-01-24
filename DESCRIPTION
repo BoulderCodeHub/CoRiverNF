@@ -15,9 +15,11 @@ LazyData: true
 Suggests:
     CRSSIO,
     dygraphs,
+    dplyr,
     ggplot2,
     knitr,
-    rmarkdown
+    rmarkdown,
+    readxl
 Remotes:
     BoulderCodeHub/CRSSIO
 RoxygenNote: 6.0.1
