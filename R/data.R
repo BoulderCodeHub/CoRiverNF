@@ -12,7 +12,7 @@
 #' 
 #' The natural flows are recomputed annually and are subject
 #' to change without notice. All methods are fully desribed at 
-#' \url{http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html}.
+#' <http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html>.
 #' 
 #' Each of the 29 locations are represented by one variable (column). The variable
 #' names use a shorthand name of each gage location, e.g., `"LeesFerry"` is
@@ -21,18 +21,17 @@
 #' to name the variables in these data.
 #' 
 #' The monthly data will sum to equal the annual data for each location as follows:
-#' \itemize{
-#'   \item Summing \code{monthlyTot} each year from January through December
-#'   will equal \code{cyAnnTot}
-#'   \item Summing \code{monthlyInt} each year from January through December 
-#'   will equal \code{cyAnnInt}
-#'   \item Summing \code{monthlyTot} each water year from October through 
-#'   September of the following year will equal \code{wyAnnTot}
-#'   \item Summing \code{monthlyInt} each water year from October through 
-#'   September of the following year will equal \code{wyAnnInt}
-#' }
 #' 
-#' The data include xts attributes (ex: \code{xtsAttributes(monthlyTot)}) for the
+#' * Summing `monthlyTot` each year from January through December
+#'   will equal `cyAnnTot`
+#' * Summing `monthlyInt` each year from January through December 
+#'   will equal `cyAnnInt`
+#' * Summing `monthlyTot` each water year from October through 
+#'   September of the following year will equal `wyAnnTot`
+#' * Summing `monthlyInt` each water year from October through 
+#'   September of the following year will equal `wyAnnInt`
+#' 
+#' The data include xts attributes (ex: `xtsAttributes(monthlyTot)`) for the
 #' source, the source workbook, and the sheet name the data were created from.
 #' 
 #' @format An xts matrix with 1323 (monthly data) or 110 (annual data) rows 
@@ -40,7 +39,7 @@
 #' value is associated with December of the year for calendar year data and 
 #' September of the year for water year data.
 #' 
-#' @source \url{http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html}
+#' @source <http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html>
 'monthlyTot'
 
 #' @rdname monthlyTot
