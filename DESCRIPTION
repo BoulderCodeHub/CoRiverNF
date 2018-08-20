@@ -1,6 +1,6 @@
 Package: CoRiverNF
 Title: Colorado River Natural Flow Data
-Version: 0.4.1
+Version: 0.4.1.9000
 Authors@R: person("Alan", "Butler", email = "rabutler@usbr.gov", role = c("aut", "cre"))
 Description: A data only package containing natural flow data for the Colorado
     River Basin. Data is included at the natural flow basin nodal level used by the
@@ -13,16 +13,11 @@ Depends:
 License: CC0
 LazyData: true
 Suggests:
-    CRSSIO,
     dygraphs,
-    dplyr,
     ggplot2,
     knitr,
     rmarkdown,
-    readxl,
     testthat
-Remotes:
-    BoulderCodeHub/CRSSIO
 RoxygenNote: 6.0.1
 VignetteBuilder: knitr
 Roxygen: list(markdown = TRUE)
