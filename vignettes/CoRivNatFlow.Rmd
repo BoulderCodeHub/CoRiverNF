@@ -119,7 +119,7 @@ dygraph(monthlyInt['2002/2005',c(2,6)])
 
 ## Updating the Natural Flow Data
 
-When new natural flow data is released, approximately every year, the package will be updated to include the new data. The code used to create the data in this package is available on [the Github repository for this package](http://www.github.com/BoulderCodeHub/CoRiverNF/tree/master/R). The `getHistoricalNFData.R` file can be updated to use the new source workbook.
+When new natural flow data are released, approximately every year, the package will be updated to include the new data. The code used to create the data in this package is available on [the Github repository for this package](http://www.github.com/BoulderCodeHub/CoRiverNF/tree/master/R). The `getHistoricalNFData.R` file can be updated to use the new source workbook.
 
 ## References
 
