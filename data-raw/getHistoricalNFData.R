@@ -11,9 +11,9 @@ library(dplyr)
 # ---------------------------
 # iFile downloaded from http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html
 httpSource <- 'http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html'
-fName <- 'NaturalFlows1906-2015_withExtensions_8.14.2017.xlsx'
+fName <- 'NaturalFlows1906-2016_withExtensions_9.28.2018.xlsx'
 startYear <- 1906
-endYear <- 2015
+endYear <- 2016
 iFile <- file.path("data-raw", fName)
 # ---------------------------
 # END User Input
@@ -26,7 +26,13 @@ createNFMatrix <- function(sName, timeStep, cy)
 
   ymJan1906 <- zoo::as.yearmon("Jan 1906")
   
-  nf <- readxl::read_xlsx(iFile, sheet = sName, skip = 3) %>%
+  if (timeStep == "monthly") {
+    skip_rows <- 3
+  } else {
+    skip_rows <- 4
+  }
+  
+  nf <- readxl::read_xlsx(iFile, sheet = sName, skip = skip_rows) %>%
     # going to take a lot of trimming, etc. to get rid of all the labels we don't 
     # need for the flow matrix
     dplyr::rename_at(
@@ -47,10 +53,21 @@ createNFMatrix <- function(sName, timeStep, cy)
       dplyr::filter_at("date", dplyr::any_vars(!is.na(.)))
       
    nf <- nf %>%
-    dplyr::select(-dplyr::matches("X__1")) %>%
+    dplyr::select(-dplyr::contains("X_")) %>%
     dplyr::mutate_if(is.character, as.numeric) %>%
     dplyr::select(-dplyr::matches("date")) %>%
     as.data.frame()
+   
+   if (ncol(nf) != 29)
+     stop("something went wrong and there not 29 columns")
+   
+   nyrs <- endYear - startYear + 1
+   
+   if (timeStep == "monthly" && nrow(nf) != (nyrs * 12 + 3))
+     stop("Wrong number of rows")
+   
+   if (timeStep == "yearly" && nrow(nf) != nyrs)
+     stop("Wrong number of rows")
   
   colnames(nf) <- CRSSIO::nf_gage_abbrv()
   
@@ -79,13 +96,13 @@ createNFMatrix <- function(sName, timeStep, cy)
   nfXts
 }
 
-sName <- c('Intervening Natural Flow','Total Natural Flow')
+sName <- c('InterveningNaturalFlow','TotalNaturalFlow')
 nfMon <- lapply(sName,createNFMatrix, 'monthly',NA)
 
-sName <- c('AnnualCYTotal Natural Flow', 'AnnualCYInterv Natural Flow')
+sName <- c('AnnualCYTotalNaturalFlow', 'AnnualCYIntervNaturalFlow')
 nfCYAnn <- lapply(sName,createNFMatrix,'yearly', TRUE)
 
-sName <- c('AnnualWYTotal Natural Flow', 'AnnualWYInterv Natural Flow')
+sName <- c('AnnualWYTotalNaturalFlow', 'AnnualWYInterv Natural Flow')
 nfWYAnn <- lapply(sName,createNFMatrix,'yearly', FALSE)
 
 # save as r data files

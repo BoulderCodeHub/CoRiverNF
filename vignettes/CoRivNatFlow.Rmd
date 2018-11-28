@@ -35,6 +35,46 @@ library(CoRiverNF)
 
 When this package is attached, the "TZ" (time zone) environment variable is set to "UTC". Since this package includes only monthly data, this is necessary to correctly access all of the monthly natural flow data in the `xts` object. To set the TZ environment variable to a different time zone, you can use: `Sys.setenv(TZ='UTC')`, and replace "UTC" with the desired time zone. Changing the time zone will cause a warning to post when accessing the natural flow data, but it *should* not have any other affects. 
 
+### Variables
+
+Each of the variable names reflects a variable name that simplifies the full USGS gage name. The following table maps the full USGS gage names to the abbreviated names that are used as the variables names in the xts objects.
+
+```{r, echo=FALSE}
+nf_gage_table <- structure(
+  c("Colorado River At Glenwood Springs, CO", "Colorado River Near Cameo, CO", 
+    "Taylor River Below Taylor Park Reservoir, CO", 
+    "Gunnision River Above Blue Mesa Reservoir,CO", 
+    "Gunnison River At Crystal Reservoir,CO", 
+    "Gunnison River Near Grand Junction, CO", 
+    "Dolores River Near Cisco, UT", "Colorado River Near Cisco UT", 
+    "Green R Bel Fontenelle Res WY", "Green R. Nr Green River, WY", 
+    "Green River Near Greendale, UT", "Yampa River Near Maybell, CO", 
+    "Little Snake River Near Lily, CO", "Duchesne River Near Randlett, UT", 
+    "White River Near Watson, UT", "Green River At Green River, UT", 
+    "San Rafael River Near Green River, UT", "San Juan River Near Archuleta,NM", 
+    "San Juan River Near Bluff, UT", "Colorado R At Lees Ferry, AZ", 
+    "Paria R At Lees Ferry, AZ", "Little Colorado River Near Cameron, AZ", 
+    "Colorado River Near Grand Canyon, AZ", "Virgin River At Littlefield, AZ", 
+    "Colorado River Below Hoover Dam, AZ-NV", 
+    "Colorado River Below Davis Dam, AZ-NV", 
+    "Bill Williams River Below Alamo Dam, AZ", 
+    "Colorado River Below Parker Dam, AZ-CA", 
+    "Colorado River Above Imperial Dam, AZ", "GlenwoodSprings", "Cameo", 
+    "TaylorPark", "BlueMesa", "Crystal", "GrandJunction", "CiscoDolores", 
+    "CiscoColorado", "Fontenelle", "GreenRiverWY", "Greendale", "Maybell", 
+    "Lily", "Randlett", "Watson", "GreenRiverUTGreen", "GreenRiverUTSanRafael", 
+    "Archuleta", "Bluff", "LeesFerry", "LeesFerryParia", "Cameron", 
+    "GrandCanyon", "Littlefield", "Hoover", "Davis", "Alamo", "Parker", 
+    "Imperial"
+  ), 
+  .Dim = c(29L, 2L), 
+  .Dimnames = list(NULL, c("USGS Gage Name", "Abbreviated Name"))
+)
+knitr::kable(nf_gage_table)
+```
+
+These variable names and full USGS gage names can be accessed in `CRSSIO::nf_gage_abbrv()` and `CRSSIO::nf_gage_names()`, respectively.
+
 ### Examples of Accessing Data
 
 For example one can access the 2010 monthly total natural flow at Lees Ferry:
@@ -47,10 +87,10 @@ Or, the annual total natural flow on the Green River at Greendale from 1960-1970
 cyAnnTot$Greendale['1960/1970']
 ```
 
-And finally, the beginning of the record until March 1908 or September 2012 until the end of the record are accessed with:
+And finally, the beginning of the record until March 1907 or September 2015 until the end of the record are accessed with:
 ```{r}
-monthlyInt$Imperial['/1908-03']
-monthlyTot$Bluff['2012-09/']
+monthlyInt$Imperial['/1907-03']
+monthlyTot$Bluff['2015-09/']
 ```
 
 To get the flow in a single month for the entire time period, use `xts::.indexmon`. For example to select data for July of every year:
@@ -59,11 +99,6 @@ head(monthlyInt$Cameo[.indexmon(monthlyInt$Cameo)==6]) # note its 0-based indexi
 ```
 
 See the `xts` package documentation for additional information on accessing and using the `xts` object. 
-
-Each of the node names reflects a variable name that simplifies the full USGS gage name. The variable names and full USGS gage names can be accessed in `CRSSIO::nf_gage_abbrv()` and `CRSSIO::nf_gage_names()`, respectively. The variable names are:
-```{r}
-names(cyAnnTot)
-```
 
 ### Examples of Aggregating Data
 
@@ -105,7 +140,8 @@ The include natural flow data will easily work with `ggplot2` and `dygraphs`, am
 
 ```{r, fig.align='center'}
 library(ggplot2)
-ggplot(cyAnnTot, aes(x=index(cyAnnTot))) + geom_line(aes(y=LeesFerry)) +
+ggplot(cyAnnTot, aes(x=index(cyAnnTot))) + 
+  geom_line(aes(y=LeesFerry)) +
   scale_x_continuous() + scale_y_continuous()
 ```
 
@@ -119,7 +155,7 @@ dygraph(monthlyInt['2002/2005',c(2,6)])
 
 ## Updating the Natural Flow Data
 
-When new natural flow data is released, approximately every year, the package will be updated to include the new data. The code used to create the data in this package is available on [the Github repository for this package](http://www.github.com/BoulderCodeHub/CoRiverNF/tree/master/R). The `getHistoricalNFData.R` file can be updated to use the new source workbook.
+When new natural flow data are released, approximately every year, the package will be updated to include the new data. The code used to create the data in this package is available on [the Github repository for this package](http://www.github.com/BoulderCodeHub/CoRiverNF/tree/master/R). The `getHistoricalNFData.R` file can be updated to use the new source workbook.
 
 ## References
 
