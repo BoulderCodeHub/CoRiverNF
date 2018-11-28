@@ -18,7 +18,7 @@
 #' Each of the 29 locations are represented by one variable (column). The 
 #' variable names use a shorthand name of each gage location, e.g., 
 #' `"LeesFerry"` is shorthand for the "Colorado River at Lees Ferry, AZ". See 
-#' `nf_gage_names()`  and `nf_gage_abbrv()` in [CRSSIO::nf_natsalt_names] for 
+#' `nf_gage_names()`  and `nf_gage_abbrv()` in the CRSSIO package for 
 #' full gage names and shorthand versions, respectively, used to name the 
 #' variables in these data.
 #' 

@@ -49,7 +49,7 @@ notice. All methods are fully desribed at
 Each of the 29 locations are represented by one variable (column). The
 variable names use a shorthand name of each gage location, e.g.,
 \code{"LeesFerry"} is shorthand for the "Colorado River at Lees Ferry, AZ". See
-\code{nf_gage_names()}  and \code{nf_gage_abbrv()} in \link[CRSSIO:nf_natsalt_names]{CRSSIO::nf_natsalt_names} for
+\code{nf_gage_names()}  and \code{nf_gage_abbrv()} in the CRSSIO package for
 full gage names and shorthand versions, respectively, used to name the
 variables in these data.
 
