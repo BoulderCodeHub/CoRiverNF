@@ -8,7 +8,7 @@ A data only R package containing natural flow data for the Colorado River Basin.
 
 The package is a convenient way to access the Colorado River Natural Flow data available [here](http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html). Every effort will be made to update the package to include the most recent natural flow data.
 
-__The current data is based on the 1906-2016 natural flow data with a date of September 28, 2018.__
+__The current data is based on the 1906-2017 natural flow data with a date of March 18, 2019.__
 
 ## Using in R
 
@@ -41,6 +41,7 @@ To run the code, edit the path to the Excel file located in the "User Input" sec
 
 ## Log
 
+- 2019-04-15: version 0.6.0 available - updated to 1906 - 2017 data
 - 2018-11-28: version 0.5.0 available - updated to 1906 - 2016 data
 - 2018-01-24: version 0.4.1 available
 - 2017-09-06: version 0.4.0 available - updated to 1906 - 2015 data
