@@ -1,4 +1,4 @@
-# script to get the monthly and annual, intervening and total natural flow into R.
+# script to get monthly and annual, intervening and total natural flow into R.
 
 library(readxl)
 library(CRSSIO) # github.com/BoulderCodeHub/CRSSIO
@@ -9,11 +9,12 @@ library(dplyr)
 # ---------------------------
 # USER INPUT
 # ---------------------------
-# iFile downloaded from http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html
+# iFile downloaded from:
+# http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html
 httpSource <- 'http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html'
-fName <- 'NaturalFlows1906-2016_withExtensions_9.28.2018.xlsx'
+fName <- "NaturalFlows1906-2017_3.18.2019.xlsx"
 startYear <- 1906
-endYear <- 2016
+endYear <- 2017
 iFile <- file.path("data-raw", fName)
 # ---------------------------
 # END User Input
@@ -25,16 +26,20 @@ createNFMatrix <- function(sName, timeStep, cy)
   message("starting to read in ", sName, " worksheet.")
 
   ymJan1906 <- zoo::as.yearmon("Jan 1906")
+  nyrs <- endYear - startYear + 1
   
   if (timeStep == "monthly") {
     skip_rows <- 3
+    # add three for OND 1905, and 1 for the row that has the units in it
+    n_max <- nyrs * 12 + 4
   } else {
     skip_rows <- 4
+    n_max <- nyrs + 1
   }
   
-  nf <- readxl::read_xlsx(iFile, sheet = sName, skip = skip_rows) %>%
-    # going to take a lot of trimming, etc. to get rid of all the labels we don't 
-    # need for the flow matrix
+  nf <- read_xlsx(iFile, sheet = sName, skip = skip_rows, n_max = n_max) %>%
+    # going to take a lot of trimming, etc. to get rid of all the labels we 
+    # don't need for the flow matrix
     dplyr::rename_at(
       .vars = "Natural Flow And Salt Calc model Object.Slot", 
       .funs = function(x) "date"
@@ -61,8 +66,6 @@ createNFMatrix <- function(sName, timeStep, cy)
    if (ncol(nf) != 29)
      stop("something went wrong and there not 29 columns")
    
-   nyrs <- endYear - startYear + 1
-   
    if (timeStep == "monthly" && nrow(nf) != (nyrs * 12 + 3))
      stop("Wrong number of rows")
    
@@ -75,12 +78,14 @@ createNFMatrix <- function(sName, timeStep, cy)
   # set the system time zone to UTC
   Sys.setenv(TZ = 'UTC')
   if(timeStep == 'monthly'){
-    nf.yearMon <- zoo::as.yearmon('1905-10') + seq(0,nrow(nf)-1)/12 # the natural flows start in Oct 31, 1905
+    # the natural flows start in Oct 1905
+    nf.yearMon <- zoo::as.yearmon('1905-10') + seq(0,nrow(nf)-1)/12 
   } else if(timeStep == 'yearly'){
     if(cy){
       nf.yearMon <- zoo::as.yearmon('1906-12') + seq(0,nrow(nf)-1)
     } else{
-      nf.yearMon <- zoo::as.yearmon('1906-09') + seq(0, nrow(nf)-1) # water year ends in September of each year
+      # water year ends in September of each year
+      nf.yearMon <- zoo::as.yearmon('1906-09') + seq(0, nrow(nf)-1) 
     }
   } else{
     stop('invalid timeStep')
@@ -102,7 +107,7 @@ nfMon <- lapply(sName,createNFMatrix, 'monthly',NA)
 sName <- c('AnnualCYTotalNaturalFlow', 'AnnualCYIntervNaturalFlow')
 nfCYAnn <- lapply(sName,createNFMatrix,'yearly', TRUE)
 
-sName <- c('AnnualWYTotalNaturalFlow', 'AnnualWYInterv Natural Flow')
+sName <- c('AnnualWYTotalNaturalFlow', 'AnnualWYIntervNaturalFlow')
 nfWYAnn <- lapply(sName,createNFMatrix,'yearly', FALSE)
 
 # save as r data files
