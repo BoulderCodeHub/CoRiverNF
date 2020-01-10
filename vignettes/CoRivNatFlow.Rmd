@@ -33,8 +33,6 @@ When loading the package, a message will post letting you know the source data f
 library(CoRiverNF)
 ```
 
-When this package is attached, the "TZ" (time zone) environment variable is set to "UTC". Since this package includes only monthly data, this is necessary to correctly access all of the monthly natural flow data in the `xts` object. To set the TZ environment variable to a different time zone, you can use: `Sys.setenv(TZ='UTC')`, and replace "UTC" with the desired time zone. Changing the time zone will cause a warning to post when accessing the natural flow data, but it *should* not have any other affects. 
-
 ### Variables
 
 Each of the variable names reflects a variable name that simplifies the full USGS gage name. The following table maps the full USGS gage names to the abbreviated names that are used as the variables names in the xts objects.
@@ -93,7 +91,7 @@ monthlyInt$Imperial['/1907-03']
 monthlyTot$Bluff['2015-09/']
 ```
 
-To get the flow in a single month for the entire time period, use `xts::.indexmon`. For example to select data for July of every year:
+To get the flow in a single month for the entire time period, use `xts::.indexmon`. For example to select data for July of every year (`head()` shows only the first 6 rows):
 ```{r}
 head(monthlyInt$Cameo[.indexmon(monthlyInt$Cameo)==6]) # note its 0-based indexing
 ```
@@ -142,7 +140,8 @@ The include natural flow data will easily work with `ggplot2` and `dygraphs`, am
 library(ggplot2)
 ggplot(cyAnnTot, aes(x=index(cyAnnTot))) + 
   geom_line(aes(y=LeesFerry)) +
-  scale_x_continuous() + scale_y_continuous()
+  scale_x_continuous() + 
+  scale_y_continuous()
 ```
 
 To compare intervening flow on the Colorado River at Cameo to the Gunnison River at Grand Junction using `dygraphs`:
