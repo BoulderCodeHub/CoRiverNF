@@ -12,9 +12,9 @@ library(dplyr)
 # iFile downloaded from:
 # http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html
 httpSource <- 'http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html'
-fName <- "NaturalFlows1906-2017_3.18.2019.xlsx"
+fName <- "NaturalFlows1906-2018_20200110.xlsx"
 startYear <- 1906
-endYear <- 2017
+endYear <- 2018
 iFile <- file.path("data-raw", fName)
 # ---------------------------
 # END User Input
@@ -58,7 +58,7 @@ createNFMatrix <- function(sName, timeStep, cy)
       dplyr::filter_at("date", dplyr::any_vars(!is.na(.)))
       
    nf <- nf %>%
-    dplyr::select(-dplyr::contains("X_")) %>%
+    dplyr::select(-dplyr::contains("...")) %>%
     dplyr::mutate_if(is.character, as.numeric) %>%
     dplyr::select(-dplyr::matches("date")) %>%
     as.data.frame()
@@ -118,9 +118,9 @@ cyAnnInt = nfCYAnn[[2]]
 wyAnnTot = nfWYAnn[[1]]
 wyAnnInt = nfWYAnn[[2]]
 
-devtools::use_data(monthlyInt, overwrite = TRUE)
-devtools::use_data(monthlyTot, overwrite = TRUE)
-devtools::use_data(cyAnnTot, overwrite = TRUE)
-devtools::use_data(cyAnnInt, overwrite = TRUE)
-devtools::use_data(wyAnnTot, overwrite = TRUE)
-devtools::use_data(wyAnnInt, overwrite = TRUE)
+usethis::use_data(monthlyInt, overwrite = TRUE)
+usethis::use_data(monthlyTot, overwrite = TRUE)
+usethis::use_data(cyAnnTot, overwrite = TRUE)
+usethis::use_data(cyAnnInt, overwrite = TRUE)
+usethis::use_data(wyAnnTot, overwrite = TRUE)
+usethis::use_data(wyAnnInt, overwrite = TRUE)

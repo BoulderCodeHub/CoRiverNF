@@ -2,9 +2,8 @@
 
 .onAttach <- function(libname, pkgname){
   packageStartupMessage(
-    "CoRiverNF package currently includes 1906-2017 natural flows, released March 18, 2019."
+    "CoRiverNF package currently includes 1906-2018 natural flows, released January 10, 2020."
   )
-  Sys.setenv(TZ='UTC')
 }
 
 release_questions <- function() 

@@ -1,3 +1,14 @@
+CoRiverNF v0.7.0
+======================
+
+**1906-2018 Released**
+
+## Additional changes
+
+* No longer set the time zone to "UTC" when the pacakge is attached. This seemed like a bad practice.
+* Minor updates to documentation and vignette
+
+
 CoRiverNF v0.6.0
 ======================
 

@@ -33,15 +33,15 @@ When loading the package, a message will post letting you know the source data f
 library(CoRiverNF)
 ```
 
-When this package is attached, the "TZ" (time zone) environment variable is set to "UTC". Since this package includes only monthly data, this is necessary to correctly access all of the monthly natural flow data in the `xts` object. To set the TZ environment variable to a different time zone, you can use: `Sys.setenv(TZ='UTC')`, and replace "UTC" with the desired time zone. Changing the time zone will cause a warning to post when accessing the natural flow data, but it *should* not have any other affects. 
-
 ### Variables
 
-Each of the variable names reflects a variable name that simplifies the full USGS gage name. The following table maps the full USGS gage names to the abbreviated names that are used as the variables names in the xts objects.
+Each of the variable names reflects a variable name that simplifies the full USGS gage name that describes a natural flow sub-basin. The following table maps the natural flow sub-basin number to the full USGS gage names and to the abbreviated names that are used as the variables names in the xts objects. The following figure shows where each sub-basin is located with the Colorado River Basin.
 
 ```{r, echo=FALSE}
 nf_gage_table <- structure(
-  c("Colorado River At Glenwood Springs, CO", "Colorado River Near Cameo, CO", 
+  c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 
+    22, 23, 24, 25, 26, 27, 28, 29, 
+    "Colorado River At Glenwood Springs, CO", "Colorado River Near Cameo, CO", 
     "Taylor River Below Taylor Park Reservoir, CO", 
     "Gunnision River Above Blue Mesa Reservoir,CO", 
     "Gunnison River At Crystal Reservoir,CO", 
@@ -67,10 +67,14 @@ nf_gage_table <- structure(
     "GrandCanyon", "Littlefield", "Hoover", "Davis", "Alamo", "Parker", 
     "Imperial"
   ), 
-  .Dim = c(29L, 2L), 
-  .Dimnames = list(NULL, c("USGS Gage Name", "Abbreviated Name"))
+  .Dim = c(29L, 3L), 
+  .Dimnames = list(NULL, c("Natural Flow Sub-basin", "USGS Gage Name", "Abbreviated Name"))
 )
 knitr::kable(nf_gage_table)
+```
+
+```{r dirStruct, results="asis",fig.cap="Natural flow basins.", echo=FALSE}
+knitr::include_graphics("CRSS_subbasins_Jan-8-2020_noTable.png")
 ```
 
 These variable names and full USGS gage names can be accessed in `CRSSIO::nf_gage_abbrv()` and `CRSSIO::nf_gage_names()`, respectively.
@@ -93,7 +97,7 @@ monthlyInt$Imperial['/1907-03']
 monthlyTot$Bluff['2015-09/']
 ```
 
-To get the flow in a single month for the entire time period, use `xts::.indexmon`. For example to select data for July of every year:
+To get the flow in a single month for the entire time period, use `xts::.indexmon`. For example to select data for July of every year (`head()` shows only the first 6 rows):
 ```{r}
 head(monthlyInt$Cameo[.indexmon(monthlyInt$Cameo)==6]) # note its 0-based indexing
 ```
@@ -142,7 +146,8 @@ The include natural flow data will easily work with `ggplot2` and `dygraphs`, am
 library(ggplot2)
 ggplot(cyAnnTot, aes(x=index(cyAnnTot))) + 
   geom_line(aes(y=LeesFerry)) +
-  scale_x_continuous() + scale_y_continuous()
+  scale_x_continuous() + 
+  scale_y_continuous()
 ```
 
 To compare intervening flow on the Colorado River at Cameo to the Gunnison River at Grand Junction using `dygraphs`:

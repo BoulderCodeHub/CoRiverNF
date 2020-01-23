@@ -9,10 +9,11 @@
 \alias{wyAnnTot}
 \alias{wyAnnInt}
 \title{Monthly and Annual; Total and Intervening Natural Flow}
-\format{An xts matrix with 1323 (monthly data) or 110 (annual data) rows
-and 29 columns (locations). All values are in acre-ft. For annual data, each
-value is associated with December of the year for calendar year data and
-September of the year for water year data.}
+\format{An xts matrix with 29 columns (locations). Annual data include
+n-years rows, where n-years are the number of years in the natural flow
+record. Monthly data include (n-years * 12) + 3 rows. All values are in
+acre-feet. For annual data, each value is associated with December of the
+year for calendar year data and September of the year for water year data.}
 \source{
 \url{http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html}
 }
@@ -31,8 +32,10 @@ wyAnnInt
 }
 \description{
 A data set containing the monthly and annual; total and intervening natural
-flow at 29 locations in the Colorado River Basin from October 1905 through
-December 2016.
+flow at 29 locations in the Colorado River Basin beginning in October 1905.
+The data go through December of the last year of computed natural flows.
+Typically, natural flows are released on a two year delay, i.e., natural
+flow through 2018 is released in 2020.
 }
 \details{
 Natural flow represents the flow that would have  occurred at a location, had
@@ -49,9 +52,8 @@ notice. All methods are fully desribed at
 Each of the 29 locations are represented by one variable (column). The
 variable names use a shorthand name of each gage location, e.g.,
 \code{"LeesFerry"} is shorthand for the "Colorado River at Lees Ferry, AZ". See
-\code{nf_gage_names()}  and \code{nf_gage_abbrv()} in the CRSSIO package for
-full gage names and shorthand versions, respectively, used to name the
-variables in these data.
+the "CoRivNatFlow" vignette for a list of the full gage names and their
+respective shorthand versions.
 
 The monthly data will sum to equal the annual data for each location as
 follows:
