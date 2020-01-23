@@ -1,6 +1,6 @@
 Package: CoRiverNF
 Title: Colorado River Natural Flow Data
-Version: 0.7.0
+Version: 0.7.0.9000
 Authors@R: person(
     "Alan", "Butler", email = "rabutler@usbr.gov", role = c("aut", "cre")
     )
