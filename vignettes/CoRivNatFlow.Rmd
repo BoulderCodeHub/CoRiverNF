@@ -35,11 +35,13 @@ library(CoRiverNF)
 
 ### Variables
 
-Each of the variable names reflects a variable name that simplifies the full USGS gage name. The following table maps the full USGS gage names to the abbreviated names that are used as the variables names in the xts objects.
+Each of the variable names reflects a variable name that simplifies the full USGS gage name that describes a natural flow sub-basin. The following table maps the natural flow sub-basin number to the full USGS gage names and to the abbreviated names that are used as the variables names in the xts objects. The following figure shows where each sub-basin is located with the Colorado River Basin.
 
 ```{r, echo=FALSE}
 nf_gage_table <- structure(
-  c("Colorado River At Glenwood Springs, CO", "Colorado River Near Cameo, CO", 
+  c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 
+    22, 23, 24, 25, 26, 27, 28, 29, 
+    "Colorado River At Glenwood Springs, CO", "Colorado River Near Cameo, CO", 
     "Taylor River Below Taylor Park Reservoir, CO", 
     "Gunnision River Above Blue Mesa Reservoir,CO", 
     "Gunnison River At Crystal Reservoir,CO", 
@@ -65,10 +67,14 @@ nf_gage_table <- structure(
     "GrandCanyon", "Littlefield", "Hoover", "Davis", "Alamo", "Parker", 
     "Imperial"
   ), 
-  .Dim = c(29L, 2L), 
-  .Dimnames = list(NULL, c("USGS Gage Name", "Abbreviated Name"))
+  .Dim = c(29L, 3L), 
+  .Dimnames = list(NULL, c("Natural Flow Sub-basin", "USGS Gage Name", "Abbreviated Name"))
 )
 knitr::kable(nf_gage_table)
+```
+
+```{r dirStruct, results="asis",fig.cap="Natural flow basins.", echo=FALSE}
+knitr::include_graphics("CRSS_subbasins_Jan-8-2020_noTable.png")
 ```
 
 These variable names and full USGS gage names can be accessed in `CRSSIO::nf_gage_abbrv()` and `CRSSIO::nf_gage_names()`, respectively.
