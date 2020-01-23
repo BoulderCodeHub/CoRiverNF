@@ -41,7 +41,7 @@ To run the code, edit the path to the Excel file located in the "User Input" sec
 
 ## Log
 
-- 2020-01-DD: version 0.7.0 available - updated to 1906 - 2018 data
+- 2020-01-23: version 0.7.0 available - updated to 1906 - 2018 data
 - 2019-04-15: version 0.6.0 available - updated to 1906 - 2017 data
 - 2018-11-28: version 0.5.0 available - updated to 1906 - 2016 data
 - 2018-01-24: version 0.4.1 available
