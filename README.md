@@ -10,7 +10,7 @@ The package is a convenient way to access the Colorado River Natural Flow data a
 
 __The package is based on the 1906-2018 natural flow data with a date of January 10, 2020.__
 
-## Using in R
+## Installation
 
 The data can be accessed by installing this package from GitHub:
 
@@ -21,6 +21,10 @@ if (!require(devtools)) {
 }
 devtools::install_github("BoulderCodeHub/CoRiverNF", build_vignettes = TRUE)
 ```
+
+**Note that when installing from GitHub, warnings are treated as errors.** This means if xts is built under a newer version of R than you have installed, then the installation of CoRiverNF will fail. You can resolve this by either installing the newer version of R, or by setting the [`R_REMOTES_NO_ERRORS_FROM_WARNINGS` environment variable to `"true"`](https://github.com/r-lib/remotes#environment-variables) before installation. 
+
+## Using in R
 
 The package includes monthly, calendar year, and water year data for total and intervening natural flow in 6 data sets:
 
