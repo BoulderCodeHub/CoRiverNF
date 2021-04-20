@@ -2,7 +2,7 @@
 
 .onAttach <- function(libname, pkgname){
   packageStartupMessage(
-    "CoRiverNF package currently includes 1906-2018 natural flows, released January 10, 2020."
+    "CoRiverNF package currently includes 1906-2019 natural flows, released April 20, 2021."
   )
 }
 
