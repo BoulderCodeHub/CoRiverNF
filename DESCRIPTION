@@ -1,9 +1,12 @@
 Package: CoRiverNF
 Title: Colorado River Natural Flow Data
 Version: 2019.0
-Authors@R: person(
-    "Alan", "Butler", email = "rabutler@usbr.gov", role = c("aut", "cre")
-    )
+Authors@R: 
+    person(given = "Alan",
+           family = "Butler",
+           role = c("aut", "cre"),
+           email = "rabutler@usbr.gov",
+           comment = c(ORCID = "0000-0002-8625-6386"))
 Description: A data only package containing natural flow data for the Colorado
     River Basin. Data are included at the 29 natural flow basins used by the
     Colorado River Simulation System (CRSS).
