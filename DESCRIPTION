@@ -1,6 +1,6 @@
 Package: CoRiverNF
 Title: Colorado River Natural Flow Data
-Version: 0.7.0
+Version: 2019.0
 Authors@R: person(
     "Alan", "Butler", email = "rabutler@usbr.gov", role = c("aut", "cre")
     )
@@ -23,6 +23,7 @@ Suggests:
     knitr,
     rmarkdown,
     testthat
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.1
 VignetteBuilder: knitr
 Roxygen: list(markdown = TRUE)
+Encoding: UTF-8

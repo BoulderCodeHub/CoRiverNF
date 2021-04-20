@@ -3,7 +3,6 @@
 \docType{package}
 \name{CoRiverNF}
 \alias{CoRiverNF}
-\alias{CoRiverNF-package}
 \title{CoRiverNF: A data only package containing natural flow data for the Colorado
 River Basin}
 \source{

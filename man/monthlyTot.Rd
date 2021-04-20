@@ -9,11 +9,23 @@
 \alias{wyAnnTot}
 \alias{wyAnnInt}
 \title{Monthly and Annual; Total and Intervening Natural Flow}
-\format{An xts matrix with 29 columns (locations). Annual data include
+\format{
+An xts matrix with 29 columns (locations). Annual data include
 n-years rows, where n-years are the number of years in the natural flow
 record. Monthly data include (n-years * 12) + 3 rows. All values are in
 acre-feet. For annual data, each value is associated with December of the
-year for calendar year data and September of the year for water year data.}
+year for calendar year data and September of the year for water year data.
+
+An object of class \code{xts} (inherits from \code{zoo}) with 1371 rows and 29 columns.
+
+An object of class \code{xts} (inherits from \code{zoo}) with 114 rows and 29 columns.
+
+An object of class \code{xts} (inherits from \code{zoo}) with 114 rows and 29 columns.
+
+An object of class \code{xts} (inherits from \code{zoo}) with 114 rows and 29 columns.
+
+An object of class \code{xts} (inherits from \code{zoo}) with 114 rows and 29 columns.
+}
 \source{
 \url{http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html}
 }

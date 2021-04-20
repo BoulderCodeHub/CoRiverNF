@@ -12,9 +12,9 @@ library(dplyr)
 # iFile downloaded from:
 # http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html
 httpSource <- 'http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html'
-fName <- "NaturalFlows1906-2018_20200110.xlsx"
+fName <- "NaturalFlows1906-2019_20210420.xlsx"
 startYear <- 1906
-endYear <- 2018
+endYear <- 2019
 iFile <- file.path("data-raw", fName)
 # ---------------------------
 # END User Input
