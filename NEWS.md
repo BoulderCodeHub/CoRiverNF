@@ -1,7 +1,9 @@
-CoRiverNF v0.7.0.9000
+CoRiverNF v2019.0
 ======================
 
-**In Development**
+**1906-2019 Released**
+
+This release marks the change in version numbering. Version numbers now indicate the last year of the natural flow data included in the release, e.g., v2019.0 includes natural flows through 2019. Minor version numbers will be used if data are updated and or this package is changed.   
 
 CoRiverNF v0.7.0
 ======================
@@ -10,8 +12,8 @@ CoRiverNF v0.7.0
 
 ## Additional changes
 
-* No longer set the time zone to "UTC" when the pacakge is attached. This seemed like a bad practice.
-* Minor updates to documentation and vignette
+* No longer set the time zone to "UTC" when the package is attached. This seemed like a bad practice.
+* Minor updates to documentation and vignette.
 
 
 CoRiverNF v0.6.0
