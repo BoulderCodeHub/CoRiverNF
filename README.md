@@ -1,8 +1,9 @@
 ## CoRiverNF
 
-[![Build Status](https://travis-ci.org/BoulderCodeHub/CoRiverNF.svg?branch=master)](https://travis-ci.org/BoulderCodeHub/CoRiverNF)
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/BoulderCodeHub/CoRiverNF/workflows/R-CMD-check/badge.svg)](https://github.com/BoulderCodeHub/CoRiverNF/actions)
+<!-- badges: end -->
 
-[![Build status](https://ci.appveyor.com/api/projects/status/eo0ghcbp94r5xvhk?svg=true)](https://ci.appveyor.com/project/rabutler-usbr/corivernf)
 
 A data only R package containing natural flow data for the Colorado River Basin. Data is included at the natural flow basin node level used by the Colorado River Simulation (CRSS).
 
