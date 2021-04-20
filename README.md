@@ -16,11 +16,9 @@ __The package is based on the 1906-2019 natural flow data with a date of April 2
 The data can be accessed by installing this package from GitHub:
 
 ```
-if (!require(devtools)) {
-    install.packages('devtools')
-    library(devtools)
-}
-devtools::install_github("BoulderCodeHub/CoRiverNF", build_vignettes = TRUE)
+# install.packages("remotes")
+
+remotes::install_github("BoulderCodeHub/CoRiverNF", build_vignettes = TRUE)
 ```
 
 **Note that when installing from GitHub, warnings are treated as errors.** This means if xts is built under a newer version of R than you have installed, then the installation of CoRiverNF will fail. You can resolve this by either installing the newer version of R, or by setting the [`R_REMOTES_NO_ERRORS_FROM_WARNINGS` environment variable to `"true"`](https://github.com/r-lib/remotes#environment-variables) before installation. 
