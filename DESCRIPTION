@@ -1,6 +1,6 @@
 Package: CoRiverNF
 Title: Colorado River Natural Flow Data
-Version: 2019.0
+Version: 2020.0
 Authors@R: 
     person(given = "Alan",
            family = "Butler",
