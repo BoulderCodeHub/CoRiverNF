@@ -5,6 +5,7 @@ library(CRSSIO) # github.com/BoulderCodeHub/CRSSIO
 library(xts)
 library(devtools)
 library(dplyr)
+library(magrittr)
 
 # ---------------------------
 # USER INPUT
@@ -12,9 +13,9 @@ library(dplyr)
 # iFile downloaded from:
 # http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html
 httpSource <- 'http://www.usbr.gov/lc/region/g4000/NaturalFlow/current.html'
-fName <- "NaturalFlows1906-2019_20210420.xlsx"
+fName <- "NaturalFlows1906-2020_20221215.xlsx"
 startYear <- 1906
-endYear <- 2019
+endYear <- 2020
 iFile <- file.path("data-raw", fName)
 # ---------------------------
 # END User Input
