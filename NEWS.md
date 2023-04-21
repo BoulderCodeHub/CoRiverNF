@@ -1,3 +1,11 @@
+CoRiverNF v2020.0
+======================
+
+**1906-2020 Released**
+
+Released 2020 natural flows. No other changes.
+
+
 CoRiverNF v2019.0
 ======================
 
